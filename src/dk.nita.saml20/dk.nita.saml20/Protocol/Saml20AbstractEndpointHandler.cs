@@ -40,6 +40,10 @@ namespace dk.nita.saml20.protocol
         /// </summary>
         public const string Profile = "profile";
         /// <summary>
+        /// Parameter name for requested credential types, one or many separated by ; (nemidkeycard;nemidkeyfile;mitid;local;test)
+        /// </summary>
+        public const string CredentialTypes = "credentialTypes";
+        /// <summary>
         /// Determines if configuration has been validated
         /// </summary>
         public static bool validated = false;

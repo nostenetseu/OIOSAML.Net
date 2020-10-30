@@ -891,6 +891,15 @@ namespace Saml2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Requested invalidCredentialType: &quot;{0}&quot;. Valid values are a combination of the following separated by ;  &quot;nemidkeycard&quot;, &quot;nemidkeyfile&quot;, &quot;mitid&quot;, &quot;local&quot; and &quot;test&quot;..
+        /// </summary>
+        internal static string ReqeustedCridentialTypeError {
+            get {
+                return ResourceManager.GetString("ReqeustedCridentialTypeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Protection requirements not satisfied.
         /// </summary>
         internal static string RequerimentsNotSatisfied {

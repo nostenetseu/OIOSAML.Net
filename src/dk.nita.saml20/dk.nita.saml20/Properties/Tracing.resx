@@ -210,4 +210,7 @@ Exception was: {2}</value>
   <data name="DemandingProfile" xml:space="preserve">
     <value>Demanding profile: "{0}"</value>
   </data>
+  <data name="RequestCredentialType" xml:space="preserve">
+    <value>Request credential type: "{0}"</value>
+  </data>
 </root>

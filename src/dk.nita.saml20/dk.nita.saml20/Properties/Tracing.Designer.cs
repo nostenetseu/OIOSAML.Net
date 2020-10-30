@@ -204,6 +204,15 @@ namespace dk.nita.saml20.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Request credential type: &quot;{0}&quot;.
+        /// </summary>
+        internal static string RequestCredentialType {
+            get {
+                return ResourceManager.GetString("RequestCredentialType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resolving an artifact
         ///
         ///Artifact: {0}

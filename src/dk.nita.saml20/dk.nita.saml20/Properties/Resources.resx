@@ -516,6 +516,9 @@ AppID={1}</value>
   <data name="DemandingLevelOfAssuranceError" xml:space="preserve">
     <value>Received bad level os assurance value: "{0}". Valid values are "Low", "Substantial", "High".</value>
   </data>
+  <data name="ReqeustedCridentialTypeError" xml:space="preserve">
+    <value>Requested invalidCredentialType: "{0}". Valid values are a combination of the following separated by ;  "nemidkeycard", "nemidkeyfile", "mitid", "local" and "test".</value>
+  </data>
   <data name="NSISLevelTooLowAccordingToDemand" xml:space="preserve">
     <value>Saml assertion does not have the required NSIS level. NSIS level was: {0} and demanded minimum NSIS level was: {1}.</value>
   </data>

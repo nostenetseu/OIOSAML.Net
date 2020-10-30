@@ -818,6 +818,41 @@ namespace dk.nita.saml20.protocol
                 Trace.TraceData(TraceEventType.Information, string.Format(Tracing.DemandingLevelOfAssurance, demandedLevelOfAssurance));
             }
 
+            if (!string.IsNullOrEmpty(context.Request.Params[CredentialTypes]))
+            {
+                string requetedCredentialTypes = context.Request.Params[CredentialTypes];
+
+                //assuming parameter credentialTypes are formatted like eg. nemidkey;mitid 
+                foreach (var credentialType in requetedCredentialTypes
+                    .Split(new[]{";"},StringSplitOptions.RemoveEmptyEntries)
+                    .Select(v=>v.ToLower())
+                    .Distinct())
+                {
+                    Trace.TraceData(TraceEventType.Information, string.Format(Tracing.RequestCredentialType, credentialType));
+                    switch (credentialType)
+                    {
+                        case "nemidkeycard": 
+                            requestContextItems.Add(("https://nemlogin.dk/internal/credential/type/nemidkeycard" , ItemsChoiceType7.AuthnContextClassRef));
+                            break;
+                        case "nemidkeyfile": 
+                            requestContextItems.Add(("https://nemlogin.dk/internal/credential/type/nemidkeyfile" , ItemsChoiceType7.AuthnContextClassRef));
+                            break;
+                        case "mitid": 
+                            requestContextItems.Add(("https://nemlogin.dk/internal/credential/type/mitid" , ItemsChoiceType7.AuthnContextClassRef));
+                            break;
+                        case "local": 
+                            requestContextItems.Add(("https://nemlogin.dk/internal/credential/type/local" , ItemsChoiceType7.AuthnContextClassRef));
+                            break;
+                        case "test": 
+                            requestContextItems.Add(("https://nemlogin.dk/internal/credential/type/test" , ItemsChoiceType7.AuthnContextClassRef));
+                            break;
+                        default:
+                            HandleError(context, string.Format(Resources.ReqeustedCridentialTypeError, credentialType));
+                            return;
+                    }
+                }
+            }
+            
             if (!string.IsNullOrEmpty(context.Request.Params[Profile]))
             {
                 string demandedProfile = context.Request.Params[Profile].ToString();
