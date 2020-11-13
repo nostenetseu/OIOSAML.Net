@@ -44,6 +44,11 @@ namespace dk.nita.saml20.protocol
         /// </summary>
         public const string CredentialTypes = "credentialTypes";
         /// <summary>
+        /// Parameter name Base64 encoding of UTF8 serialization of SigningContext
+        /// </summary>
+        public const string SigningContextExtension = "signingContextExtension";
+
+        /// <summary>
         /// Determines if configuration has been validated
         /// </summary>
         public static bool validated = false;

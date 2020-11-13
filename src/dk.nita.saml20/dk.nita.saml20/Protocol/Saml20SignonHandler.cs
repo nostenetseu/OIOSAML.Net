@@ -787,10 +787,7 @@ namespace dk.nita.saml20.protocol
             IDPEndPointElement destination =
                 DetermineEndpointConfiguration(SAMLBinding.REDIRECT, idpEndpoint.SSOEndpoint, idpEndpoint.metadata.SSOEndpoints());
 
-
-
             request.Destination = destination.Url;
-
 
             bool isPassive;
             string isPassiveAsString = context.Request.Params[IDPIsPassive];
@@ -876,6 +873,16 @@ namespace dk.nita.saml20.protocol
 
             if (idpEndpoint.IsPassive)
                 request.IsPassive = true;
+
+            if (!string.IsNullOrEmpty(context.Request.Params[SigningContextExtension]))
+            {
+                string signingContext = context.Request.Params[SigningContextExtension];
+                request.Request.Extensions = new Extensions();
+                var decoded = Encoding.UTF8.GetString(Convert.FromBase64String(signingContext));
+                var document = new XmlDocument();
+                document.LoadXml(decoded);
+                request.Request.Extensions.Any=new[]{document.DocumentElement};
+            }
 
             bool forceAuthn;
             string forceAuthnAsString = context.Request.Params[IDPForceAuthn];
