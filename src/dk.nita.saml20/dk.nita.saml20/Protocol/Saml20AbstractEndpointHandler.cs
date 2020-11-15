@@ -44,7 +44,7 @@ namespace dk.nita.saml20.protocol
         /// </summary>
         public const string CredentialTypes = "credentialTypes";
         /// <summary>
-        /// Parameter name Base64 encoding of UTF8 serialization of SigningContext
+        /// Parameter name for Url encoded Base64 string of UTF8 serialization of SigningContext (Replace('+', '.').Replace('/', '_').Replace('=', '-'))
         /// </summary>
         public const string SigningContextExtension = "signingContextExtension";
 

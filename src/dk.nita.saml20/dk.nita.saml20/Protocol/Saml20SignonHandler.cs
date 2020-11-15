@@ -878,10 +878,10 @@ namespace dk.nita.saml20.protocol
             {
                 string signingContext = context.Request.Params[SigningContextExtension];
                 request.Request.Extensions = new Extensions();
-                var decoded = Encoding.UTF8.GetString(Convert.FromBase64String(signingContext));
+                var decoded = Encoding.UTF8.GetString(Convert.FromBase64String(UrlDecodeBase64(signingContext)));
                 var document = new XmlDocument();
                 document.LoadXml(decoded);
-                request.Request.Extensions.Any=new[]{document.DocumentElement};
+                request.Request.Extensions.Any = new[] {document.DocumentElement};
             }
 
             bool forceAuthn;
@@ -958,5 +958,9 @@ namespace dk.nita.saml20.protocol
             HandleError(context, Resources.BindingError);
         }
 
+        private static string UrlDecodeBase64(string encodedBase64Input)
+        {
+            return encodedBase64Input.Replace('.', '+').Replace('_', '/').Replace('-', '=');
+        }        
     }
 }
