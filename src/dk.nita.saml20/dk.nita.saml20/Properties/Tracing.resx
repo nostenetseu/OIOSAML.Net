@@ -213,4 +213,7 @@ Exception was: {2}</value>
   <data name="RequestCredentialType" xml:space="preserve">
     <value>Request credential type: "{0}"</value>
   </data>
+  <data name="RequestId" xml:space="preserve">
+    <value>RequestId : "{0}"</value>
+  </data>
 </root>

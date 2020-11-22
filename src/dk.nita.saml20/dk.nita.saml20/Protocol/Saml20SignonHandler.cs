@@ -849,6 +849,13 @@ namespace dk.nita.saml20.protocol
                     }
                 }
             }
+            if (!string.IsNullOrEmpty(context.Request.Params[RequestId]))
+            {
+                string requestId = context.Request.Params[RequestId];
+                request.Request.Scoping = new Scoping();
+                request.Request.Scoping.RequesterID = new[] {requestId};
+                Trace.TraceData(TraceEventType.Information, string.Format(Tracing.RequestId, requestId));
+            }
             
             if (!string.IsNullOrEmpty(context.Request.Params[Profile]))
             {

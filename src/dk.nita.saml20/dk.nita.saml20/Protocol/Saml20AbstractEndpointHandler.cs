@@ -36,6 +36,10 @@ namespace dk.nita.saml20.protocol
         /// </summary>
         public const string NSISLevel = "levelOfAssurance";
         /// <summary>
+        /// Parameter name for requestId
+        /// </summary>
+        public const string RequestId = "requestId";
+        /// <summary>
         /// Parameter name for profile type (Person/Professional)
         /// </summary>
         public const string Profile = "profile";
