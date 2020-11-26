@@ -563,6 +563,7 @@ namespace dk.nita.saml20.protocol
             }
 
             // Only check if assertion has the required level of assurance (OIOSAML 3.0) if it is present.
+            /* Not a requirement in OIOSAML 3.0
             string NSISLevel = GetNSISLevel(assertion);
             if (NSISLevel == null)
             {
@@ -572,9 +573,7 @@ namespace dk.nita.saml20.protocol
                 HandleError(context, Resources.NSISLevelMissing);
                 return;
             }
-
-            // Only check if assertion has the required level of assurance (OIOSAML 3.0)
-            string minimumConfiguredNSISLevel = SAML20FederationConfig.GetConfig().MinimumNSISLevel;
+            */
 
             // Verify demanded assurance level if any
             if (SessionStore.CurrentSession[SessionConstants.ExpectedNSISLevel] != null)
@@ -592,8 +591,11 @@ namespace dk.nita.saml20.protocol
                     return;
                 }
             }
-            else
+            else if(NSISLevel!=null)
             {
+                // Only check if assertion has the required level of assurance (OIOSAML 3.0)
+                string minimumConfiguredNSISLevel = SAML20FederationConfig.GetConfig().MinimumNSISLevel;
+
                 // Verify minimum configured assurance level if no demand are present
                 if (!CheckNSISLevel(NSISLevel, minimumConfiguredNSISLevel))
                 {
