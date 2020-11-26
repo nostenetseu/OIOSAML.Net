@@ -563,8 +563,8 @@ namespace dk.nita.saml20.protocol
             }
 
             // Only check if assertion has the required level of assurance (OIOSAML 3.0) if it is present.
-            /* Not a requirement in OIOSAML 3.0
             string NSISLevel = GetNSISLevel(assertion);
+            /* Not a requirement in OIOSAML 3.0
             if (NSISLevel == null)
             {
                 AuditLogging.logEntry(Direction.IN, Operation.AUTHNREQUEST_POST,
