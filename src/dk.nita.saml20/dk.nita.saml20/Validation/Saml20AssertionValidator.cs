@@ -223,7 +223,7 @@ namespace dk.nita.saml20.Validation
 
             bool oneTimeUseSeen = false;
             bool proxyRestrictionsSeen = false;
-            
+
             ValidateConditionsInterval(assertion.Conditions);
 
             foreach (ConditionAbstract cat in assertion.Conditions.Items)
