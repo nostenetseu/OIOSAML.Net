@@ -52,6 +52,10 @@ namespace dk.nita.saml20.protocol
         /// </summary>
         public const string SigningContextExtension = "signingContextExtension";
 
+        /// Parameter name for Url encoded Base64 string of UTF8 serialization of specific Subject NameId|SpNameQualifier (Replace('+', '.').Replace('/', '_').Replace('=', '-'))
+        /// </summary>
+        public const string NameIdAndSpNameQualifier = "nameidandspnamequalifier";
+        
         /// <summary>
         /// Determines if configuration has been validated
         /// </summary>

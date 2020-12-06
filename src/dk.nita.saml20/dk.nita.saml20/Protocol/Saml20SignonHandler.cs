@@ -893,6 +893,19 @@ namespace dk.nita.saml20.protocol
                 request.Request.Extensions.Any = new[] {document.DocumentElement};
             }
 
+            if (!string.IsNullOrEmpty(context.Request.Params[NameIdAndSpNameQualifier]))
+            {
+                string nameid = context.Request.Params[NameIdAndSpNameQualifier];
+                var split = Encoding.UTF8.GetString(Convert.FromBase64String(UrlDecodeBase64(nameid))).Split(new []{"|"},StringSplitOptions.None);
+                if (split.Length == 2)
+                {
+                    request.Request.Subject = new Subject
+                    {
+                        Items = new []{ new NameID {Value = split[0], SPNameQualifier = split[1], Format = "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"}}
+                    };
+                }
+            }
+            
             bool forceAuthn;
             string forceAuthnAsString = context.Request.Params[IDPForceAuthn];
             if (bool.TryParse(forceAuthnAsString, out forceAuthn))
